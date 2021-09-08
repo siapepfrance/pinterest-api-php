@@ -26,21 +26,13 @@ The Pinterest API wrapper is available on Github only so you need two steps to i
 ```json
 {
     "require": {
-      "siapepfrance/pinterest-api-php": "^0.3.13"
+        "dirkgroenen/pinterest-api-php": "^0.3.13"
     },
     "repositories": [
-      {
-         "type": "package",
-         "package": {
-           "name": "siapepfrance/pinterest-api-php",
-           "version": "0.3.13",
-           "source": {
-             "url": "https://github.com/siapepfrance/pinterest-api-php.git",
-             "type": "git",
-             "reference": "master"
-           }
-         }
-      }
+        {
+            "type": "git",
+            "url": "https://github.com/siapepfrance/pinterest-api-php.git"
+        }
     ]
 }
 ```
