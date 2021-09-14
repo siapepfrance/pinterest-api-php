@@ -180,7 +180,7 @@ class PinterestOAuth {
         $data = array(
             "grant_type"    => "refresh_token",
             "refresh_token" => $refresh_token,
-            "$scope" => $scope
+            "scope" => $scope
         );
 
         // Build headers array
