@@ -7,7 +7,7 @@
 [![Packagist](https://img.shields.io/packagist/v/dirkgroenen/pinterest-api-php.svg)](https://packagist.org/packages/dirkgroenen/pinterest-api-php)
 -------------------
 
-A PHP wrapper for the official [Pinterest API](https://dev.pinterest.com).
+A PHP wrapper for the official [Pinterest API](https://developers.pinterest.com/docs/api/v5/).
 
 # Requirements
 - PHP 5.4 or higher (actively tested on PHP >=7.1)
@@ -15,7 +15,7 @@ A PHP wrapper for the official [Pinterest API](https://dev.pinterest.com).
 - Registered Pinterest App
 
 # Get started
-To use the Pinterest API you have to register yourself as a developer and [create](https://dev.pinterest.com/apps/) an application. After you've created your app you will receive a `app_id` and `app_secret`.
+To use the Pinterest API you have to register yourself as a developer and [create](https://developers.pinterest.com/apps/) an application. After you've created your app you will receive a `app_id` and `app_secret`.
 
 > The terms `client_id` and `client_secret` are in this case `app_id` and `app_secret`.
 
@@ -57,7 +57,7 @@ $loginurl = $pinterest->auth->getLoginUrl(REDIRECT_URI, array('read_public'));
 echo '<a href=' . $loginurl . '>Authorize Pinterest</a>';
 ```
 
-Check the [Pinterest documentation](https://dev.pinterest.com/docs/api/overview/#scopes) for the available scopes.
+Check the [Pinterest documentation](https://developers.pinterest.com/docs/api/v5/#tag/Scopes) for the available scopes.
 
 After your user has used the login link to authorize he will be send back to the given `REDIRECT_URI`. The URL will contain the `code` which can be exchanged into an `access_token`. To exchange the code for an `access_token` and set it you can use the following code:
 
