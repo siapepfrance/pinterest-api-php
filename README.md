@@ -166,6 +166,15 @@ $pins = $pinterest->boards->listBoards();
 $pins->hasNextPage();
 ```
 
+## Get the next page if collection has next page
+
+`getNextPage()`
+
+```php
+$pins = $pinterest->boards->getNextPage();
+$pins->getNextPage();
+```
+
 Returns: `Boolean`
 
 ## Get pagination data

@@ -143,6 +143,18 @@ class Collection implements \JsonSerializable, \ArrayAccess, \IteratorAggregate{
     }
 
     /**
+     * Navigate to the next page if available
+     * @return Collection
+     */
+    public function nextPage()
+    {
+        if ($this->hasNextPage()) {
+            $response = $this->master->request->execute('GET', $this->response->page['next']);
+            return new self($this->master, $response, $this->model);
+        }
+    }
+
+    /**
      * Return the item at the given index
      *
      * @access public
