@@ -201,7 +201,7 @@ The methods below are available through `$pinterest->auth`.
 `getLoginUrl(string $redirect_uri, array $scopes, string $response_type = "code");`
 
 ```php
-$pinterest->auth->getLoginUrl("https://pinterest.dev/callback.php", array("read_public"));
+$pinterest->auth->getLoginUrl("https://pinterest.dev/callback.php", array("boards:read,boards:write,boards:write_secret,pins:read,pins:write,pins:write_secret"));
 ```
 
 Check the [Pinterest documentation](https://developers.pinterest.com/docs/api/v5/#tag/Scopes) for the available scopes.
