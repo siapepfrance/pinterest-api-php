@@ -68,13 +68,13 @@ if(isset($_GET["code"])){
 }
 ```
 
-## Get the user's profile
+## Get the user's account
 
-To get the profile of the current logged in user you can use the `Users::me(<array>);` method.
+To get the profile of the current logged in user you can use the `UserAccounts::get(<array>);` method.
 
 ```php
-$me = $pinterest->users->me();
-echo $me;
+$userAccount = $pinterest->user_accounts->get();
+echo $userAccount;
 ```
 
 # Models
@@ -84,43 +84,38 @@ Models also show the available fields (which are also described in the Pinterest
 
 ## Available models
 
-### [User](https://dev.pinterest.com/docs/api/users/#user-object)
+### [User Accounts](https://developers.pinterest.com/docs/api/v5/#tag/user_account)
 
-### [Pin](https://dev.pinterest.com/docs/api/pins/#pin-object)
+### [Boards](https://developers.pinterest.com/docs/api/v5/#tag/boards)
 
-### [Board](https://dev.pinterest.com/docs/api/boards/#board-object)
+### [Pins](https://developers.pinterest.com/docs/api/v5/#tag/pins)
 
-### Interest
-- id
-- name
+### [Ad Accounts](https://developers.pinterest.com/docs/api/v5/#tag/ad_accounts)
+
 
 ## Retrieving extra fields
 If you want more fields you can specify these in the `$data` (GET requests) or `$fields` (PATCH requests) array. Example:
 
 ```php
-$pinterest->users->me();
+$pinterest->user_accounts->get();
 ```
 
 Response:
 
 ```json
 {
-    "id": "503066358284560467",
-    "username": null,
-    "first_name": "Dirk ",
-    "last_name": "Groenen",
-    "bio": null,
-    "created_at": null,
-    "counts": null,
-    "image": null
+    "account_type": "PINNER",
+    "profile_image": "https://www.siapep.fr/profile",
+    "website_url": "https://www.siapep.fr",
+    "username": "siapepfrance"
 }
 ```
 
-By default, not all fields are returned. The returned data from the API has been parsed into the `User` model. Every field in this model can be filled by parsing an extra `$data` array with the key `fields`. Say we want the user's username, first_name, last_name and image (small and large):
+By default, not all fields are returned. The returned data from the API has been parsed into the `UserAccount` model. Every field in this model can be filled by parsing an extra `$data` array with the key `fields`. Say we want the user's username, account_type, website_url:
 
 ```php
 $pinterest->users->me(array(
-    'fields' => 'username,first_name,last_name,image[small,large]'
+    'fields' => 'username,account_type,website_url'
 ));
 ```
 
@@ -128,26 +123,9 @@ The response will now be:
 
 ```json
 {
-    "id": "503066358284560467",
-    "username": "dirkgroenen",
-    "first_name": "Dirk ",
-    "last_name": "Groenen",
-    "bio": null,
-    "created_at": null,
-    "counts": null,
-    "image": {
-        "small": {
-                "url": "http://media-cache-ak0.pinimg.com/avatars/dirkgroenen_1438089829_30.jpg",
-                "width": 30,
-                "height": 30
-            },
-            "large": {
-                "url": "http://media-cache-ak0.pinimg.com/avatars/dirkgroenen_1438089829_280.jpg",
-                "width": 280,
-                "height": 280
-            }
-        }
-    }
+    "account_type": "PINNER",
+    "website_url": "https://www.siapep.fr",
+    "username": "siapepfrance"
 }
 ```
 
@@ -163,7 +141,7 @@ Available methods for the collection class:
 `all()`
 
 ```php
-$pins = $pinterest->users->getMeLikes();
+$pins = $pinterest->boards->listBoards();
 $pins->all();
 ```
 
@@ -173,7 +151,7 @@ Returns: `array<Model>`
 `get( int $index )`
 
 ```php
-$pins = $pinterest->users->getMeLikes();
+$pins = $pinterest->boards->listBoards();
 $pins->get(0);
 ```
 
@@ -184,7 +162,7 @@ Returns: `Model`
 `hasNextPage()`
 
 ```php
-$pins = $pinterest->users->getMeLikes();
+$pins = $pinterest->boards->listBoards();
 $pins->hasNextPage();
 ```
 
@@ -196,7 +174,7 @@ Returns an array with an `URL` and `cursor` for the next page, or `false` when n
 `pagination`
 
 ```php
-$pins = $pinterest->users->getMeLikes();
+$pins = $pinterest->boards->listBoards();
 $pins->pagination['cursor'];
 ```
 
@@ -217,9 +195,16 @@ The methods below are available through `$pinterest->auth`.
 $pinterest->auth->getLoginUrl("https://pinterest.dev/callback.php", array("read_public"));
 ```
 
-Check the [Pinterest documentation](https://dev.pinterest.com/docs/api/overview/#scopes) for the available scopes.
+Check the [Pinterest documentation](https://developers.pinterest.com/docs/api/v5/#tag/Scopes) for the available scopes.
 
 **Note: since 0.2.0 the default authentication method has changed to `code` instead of `token`. This means you have to exchange the returned code for an access_token.**
+
+### Set redirect_uri (this method is useful when using the authorization_code flow to authenticate )
+`setRedirectUri( string $redirect_uri );`
+
+```php
+$pinterest->auth->setRedirectUri($redirect_uri);
+```
 
 ### Get access_token
 `getOAuthToken( string $code );`
@@ -233,6 +218,13 @@ $pinterest->auth->getOAuthToken($code);
 
 ```php
 $pinterest->auth->setOAuthToken($access_token);
+```
+
+### Refresh the expired access_token thanks to the refresh token
+`refreshOAuthToken( string $refresh_token );`
+
+```php
+$pinterest->auth->refreshOAuthToken($access_token);
 ```
 
 ### Get state
@@ -278,93 +270,48 @@ $pinterest->getRateLimitRemaining();
 
 Returns: `int`
 
-## Users
+## User Accounts
 
-The methods below are available through `$pinterest->users`.
+The methods below are available through `$pinterest->user_accounts`.
 
 > You also cannot access a user’s boards or Pins who has not authorized your app.
 
-### Get logged in user
-`me( array $data );`
+### Get logged in user account
+`get( array $data );`
 
 ```php
-$pinterest->users->me();
+$pinterest->user_accounts->get();
 ```
 
-Returns: `User`
+Returns: `UserAccount`
 
-### Find a user
-`find( string $username_or_id );`
+### Get logged in user account analytics
+`getAnalytics( array $data );`
 
 ```php
-$pinterest->users->find('dirkgroenen');
+$pinterest->user_accounts->getAnalytics($data);
 ```
 
-Returns: `User`
-
-### Get user's pins
-`getMePins( array $data );`
-
-```php
-$pinterest->users->getMePins();
-```
-
-Returns: `Collection<Pin>`
-
-### Search in user's pins
-`getMePins( string $query, array $data );`
-
-```php
-$pinterest->users->searchMePins("cats");
-```
-
-Returns: `Collection<Pin>`
-
-### Search in user's boards
-`searchMeBoards( string $query, array $data );`
-
-```php
-$pinterest->users->searchMeBoards("cats");
-```
-
-Returns: `Collection<Board>`
-
-### Get user's boards
-`getMeBoards( array $data );`
-
-```php
-$pinterest->users->getMeBoards();
-```
-
-Returns: `Collection<Board>`
-
-### Get user's likes
-`getMeLikes( array $data );`
-
-```php
-$pinterest->users->getMeLikes();
-```
-
-Returns: `Collection<Pin>`
-
-### Get user's followers
-`getMeLikes( array $data );`
-
-```php
-$pinterest->users->getMeFollowers();
-```
-
-Returns: `Collection<Pin>`
+Returns: `Collection<UserAccountAnalytic>`
 
 ## Boards
 
 The methods below are available through `$pinterest->boards`.
 
-### Get board
-`get( string $board_id, array $data );`
+### List boards
+`listBoards( array $data );`
 
 ```php
-$pinterest->boards->get("dirkgroenen/pinterest-api-test");
+$pinterest->boards->listBoards();
+```
+
+Returns: `Collection<Board>`
+
+### Get board
+`get( string $boardId, array $data );`
+
+```php
+$pinterest->boards->get();
 ```
 
 Returns: `Board`
@@ -375,28 +322,38 @@ Returns: `Board`
 ```php
 $pinterest->boards->create(array(
     "name"          => "Test board from API",
-    "description"   => "Test Board From API Test"
+    "description"   => "Test Board From API Test",
+    "privacy"       => "PUBLIC"
 ));
 ```
 
 Returns: `Board`
 
 ### Edit board
-`edit( string $board_id, array $data, string $fields = null );`
+`edit( string $boardId, array $data, string $fields = null );`
 
 ```php
-$pinterest->boards-edit("dirkgroenen/pinterest-api-test", array(
+$pinterest->boards->edit("1234567890", array(
     "name"  => "Test board after edit"
 ));
 ```
 
 Returns: `Board`
 
-### Delete board
-`delete( string $board_id, array $data );`
+### Get board pins
+`delete( string $boardId, array $data );`
 
 ```php
-$pinterest->boards->delete("dirkgroenen/pinterest-api-test");
+$pinterest->boards->pins("1234567890", []);
+```
+
+Returns: `Collection<Pin>`
+
+### Delete board
+`delete( string $boardId, array $data );`
+
+```php
+$pinterest->boards->delete("1234567890", []);
 ```
 
 Returns: `True|PinterestException`
@@ -405,21 +362,32 @@ Returns: `True|PinterestException`
 The methods below are available through `$pinterest->sections`.
 
 ### Create section on board
-`create( string $board_id, array $data );`
+`create( string $boardId, array $data );`
 
 ```php
-$pinterest->sections->create("503066289565421205", array(
-    "title" => "Test from API"
+$pinterest->sections->create("1234567890", array(
+    "name" => "Test from API"
+));
+```
+
+Returns: `Section`
+
+### Update section on board
+`create( string $boardId, string $sectionId, array $data );`
+
+```php
+$pinterest->sections->update("1234567890", "10111213", array(
+    "name" => "Test from API"
 ));
 ```
 
 Returns: `Section`
 
 ### Get sections on board
-`get( string $board_id, array $data );`
+`get( string $boardId, array $data );`
 
 ```php
-$pinterest->sections->get("503066289565421205");
+$pinterest->sections->get("1234567890");
 ```
 
 Returns: `Collection<Section>`
@@ -427,20 +395,20 @@ Returns: `Collection<Section>`
 ### Get pins from section
 > Note: Returned board ids can't directly be provided to `pins()`. The id needs to be extracted from \<BoardSection xxx\>
 
-`get( string $board_id, array $data );`
+`get( string $boardId, string $sectionId, array $data );`
 
 ```php
-$pinterest->sections->pins("5027630990032422748");
+$pinterest->sections->pins("1234567890", "10111213");
 ```
 
 Returns: `Collection<Pin>`
 
 ### Delete section
 
-`delete( string $section_id );`
+`delete( string $boardId, string $sectionId );`
 
 ```php
-$pinterest->sections->delete("5027630990032422748");
+$pinterest->sections->delete("1234567890", "10111213");
 ```
 
 Returns: `boolean`
@@ -450,19 +418,19 @@ Returns: `boolean`
 The methods below are available through `$pinterest->pins`.
 
 ### Get pin
-`get( string $pin_id, array $data );`
+`get( string $pinId, array $data );`
 
 ```php
-$pinterest->pins->get("181692166190246650");
+$pinterest->pins->get("10111213");
 ```
 
 Returns: `Pin`
 
 ### Get pins from board
-`fromBoard( string $board_id, array $data );`
+`fromBoard( string $boardId, array $data );`
 
 ```php
-$pinterest->pins->fromBoard("dirkgroenen/pinterest-api-test");
+$pinterest->pins->fromBoard("1234567890");
 ```
 
 Returns: `Collection<Pin>`
@@ -474,49 +442,60 @@ Creating a pin with an image hosted somewhere else:
 
 ```php
 $pinterest->pins->create(array(
-    "note"          => "Test board from API",
-    "image_url"     => "https://download.unsplash.com/photo-1438216983993-cdcd7dea84ce",
-    "board"         => "dirkgroenen/pinterest-api-test"
+    'link' => 'https://www.siapep.fr',
+    'title' => 'Test board from API',
+    'description' => $message,
+    'alt_text' => "",
+    'board_id' => '1234567890',
+    'board_section_id' => null,
+    'media_source' => [
+        'source_type' => 'image_url',
+        'url' => 'https://www.siapep.fr/api/public/file/23/getcontent'
+    ]
 ));
 ```
 
-Creating a pin with an image located on the server:
+Creating a pin with a base64 encoded image on the server:
 
 ```php
+
+// Get the image and convert into string
+$img = file_get_contents('/path/to/image.png');
+
+// Encode the image string data into base64
+$imgBase64 = base64_encode($img);
+
 $pinterest->pins->create(array(
-    "note"          => "Test board from API",
-    "image"         => "/path/to/image.png",
-    "board"         => "dirkgroenen/pinterest-api-test"
+    'link' => 'https://www.siapep.fr',
+    'title' => 'Test Pin from API',
+    'description' => 'Test Pin description from API',
+    'alt_text' => "",
+    'board_id' => '1234567890',
+    'board_section_id' => null,
+    'media_source' => [
+        'source_type' => 'image_base64',
+        'content_type' => 'image/png',
+        'data' => $imgBase64
+    ]
 ));
 ```
-
-Creating a pin with a base64 encoded image:
-
-```php
-$pinterest->pins->create(array(
-    "note"          => "Test board from API",
-    "image_base64"  => "[base64 encoded image]",
-    "board"         => "dirkgroenen/pinterest-api-test"
-));
-```
-
 
 Returns: `Pin`
 
 ### Edit pin
 
-`edit( string $pin_id, array $data, string $fields = null );`
+`edit( string $pinId, array $data, string $fields = null );`
 
 ```php
-$pinterest->pins->edit("181692166190246650", array(
-    "note"  => "Updated name"
+$pinterest->pins->edit("15161718", array(
+    'description' => 'Test Pin description from API bis',
 ));
 ```
 
 Returns: `Pin`
 
 ### Delete pin
-`delete( string $pin_id, array $data );`
+`delete( string $pinId, array $data );`
 
 ```php
 $pinterest->pins->delete("181692166190246650");
@@ -524,96 +503,84 @@ $pinterest->pins->delete("181692166190246650");
 
 Returns: `True|PinterestException`
 
-## Following
 
-The methods below are available through `$pinterest->following`.
+## Ad Accounts
 
-### Following users
-`users( array $data );`
+The methods below are available through `$pinterest->ad_accounts`.
 
-```php
-$pinterest->following->users();
-```
+> You also cannot access a user’s boards or Pins who has not authorized your app.
 
-Returns: `Collection<User>`
-
-### Following boards
-`boards( array $data );`
+### Get ad accounts
+`get( array $data );`
 
 ```php
-$pinterest->following->boards();
+$pinterest->ad_accounts->get();
 ```
 
-Returns: `Collection<Board>`
+Returns: `AdAccount`
 
-### Following interests/categories
-`interests( array $data );`
+### Get ad accounts analytics
+`getAnalytics( string $adAccountId, array $data );`
 
 ```php
-$pinterest->following->interests();
+$pinterest->ad_accounts->getAnalytics($adAccountId, $data);
 ```
 
-Returns: `Collection<Interest>`
+Returns: `Collection<AdAccountAnalytic>`
 
-### Follow an user
-`followUser( string $username_or_id );`
+### Get ad accounts campaigns
+`getCampaigns( string $adAccountId, array $data );`
 
 ```php
-$pinterest->following->followUser("dirkgroenen");
+$pinterest->ad_accounts->getCampaigns($adAccountId, $data);
 ```
 
-Returns: `True|PinterestException`
+Returns: `Collection<AdCampaign>`
 
-### Unfollow an user
-`unfollowUser( string $username_or_id );`
+### Get ad account campaign analytics
+`getCampaignAnalytics( string $adAccountId, array $data );`
 
 ```php
-$pinterest->following->unfollowUser("dirkgroenen");
+$pinterest->ad_accounts->getCampaignAnalytics($adAccountId, $data);
 ```
 
-Returns: `True|PinterestException`
+Returns: `Collection<AdCampaignAnalytic>`
 
-### Follow a board
-`followBoard( string $board_id );`
+### Get ad account groups
+`getAdGroups( string $adAccountId, array $data );`
 
 ```php
-$pinterest->following->followBoard("503066289565421201");
+$pinterest->ad_accounts->getAdGroups($adAccountId, $data);
 ```
 
-Returns: `True|PinterestException`
+Returns: `Collection<AdGroup>`
 
-### Unfollow a board
-`unfollowBoard( string $board_id );`
+### Get ad account group analytics
+`getAdGroupAnalytics( string $adAccountId, array $data );`
 
 ```php
-$pinterest->following->unfollowBoard("503066289565421201");
+$pinterest->ad_accounts->getAdGroupAnalytics($adAccountId, $data);
 ```
 
-Returns: `True|PinterestException`
+Returns: `Collection<AdGroupAnalytic>`
 
-### Follow an interest
-
-> According to the Pinterest documentation this endpoint exists, but for some reason their API is returning an error at the moment.
-
-`followInterest( string $interest );`
+### Get ad account ads
+`getAds( string $adAccountId, array $data );`
 
 ```php
-$pinterest->following->followInterest("architecten-911112299766");
+$pinterest->ad_accounts->getAds($adAccountId, $data);
 ```
 
-Returns: `True|PinterestException`
+Returns: `Collection<Ad>`
 
-### Unfollow an interest
-
-> According to the Pinterest documentation this endpoint exists, but for some reason their API is returning an error at the moment.
-
-`unfollowInterest( string $interest );`
+### Get ad account ad analytics
+`getAdAnalytics( string $adAccountId, array $data );`
 
 ```php
-$pinterest->following->unfollowInterest("architecten-911112299766");
+$pinterest->ad_accounts->getAdAnalytics($adAccountId, $data);
 ```
 
-Returns: `True|PinterestException`
+Returns: `Collection<AdAnalytic>`
 
 # Examples
 

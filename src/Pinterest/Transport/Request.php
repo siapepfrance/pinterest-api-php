@@ -173,11 +173,35 @@ class Request {
      */
     public function execute($method, $apiCall, array $parameters = array(), $headers = array())
     {
+        $hasHttpBuildQueryHeader = isset($headers['http_build_query']) && $headers['http_build_query'] === true;
+        $contentType = null;
+
+        if (isset($headers['http_build_query'])) {
+            unset($headers['http_build_query']);
+        }
+
         // Check if the access token needs to be added
         if ($this->access_token != null) {
             $headers = array_merge($headers, array(
                 "Authorization: Bearer " . $this->access_token,
             ));
+        }
+
+        // Check if another Authorization header needs to be added
+        if (isset($headers['Authorization'])) {
+            $headers = array_merge($headers, array(
+                "Authorization: " . $headers['Authorization'],
+            ));
+            unset($headers['Authorization']);
+        }
+
+        // Check if a Content Type header needs to be added
+        if (isset($headers['Content-Type'])) {
+            $headers = array_merge($headers, array(
+                "Content-Type: " . $headers['Content-Type'],
+            ));
+            $contentType = $headers['Content-Type'];
+            unset($headers['Content-Type']);
         }
 
         // Force cURL to not send Expect header to workaround bug with Akamai CDN not handling
@@ -204,10 +228,11 @@ class Request {
 
         switch ($method) {
             case 'POST':
+                $finalParameters = $hasHttpBuildQueryHeader ? (http_build_query($parameters)) : ($contentType === 'application/json' ? json_encode($parameters) : $parameters);
                 $ch->setOptions(array(
                     CURLOPT_CUSTOMREQUEST   => "POST",
                     CURLOPT_POST            => count($parameters),
-                    CURLOPT_POSTFIELDS      => $parameters
+                    CURLOPT_POSTFIELDS      => $finalParameters
                 ));
 
                 if (!class_exists('\CURLFile') && defined('CURLOPT_SAFE_UPLOAD')) {
@@ -222,10 +247,11 @@ class Request {
                 $ch->setOption(CURLOPT_CUSTOMREQUEST, "DELETE");
                 break;
             case 'PATCH':
+                $finalParameters = $hasHttpBuildQueryHeader ? (http_build_query($parameters)) : ($contentType === 'application/json' ? json_encode($parameters) : $parameters);
                 $ch->setOptions(array(
                     CURLOPT_CUSTOMREQUEST   => "PATCH",
                     CURLOPT_POST            => count($parameters),
-                    CURLOPT_POSTFIELDS      => $parameters
+                    CURLOPT_POSTFIELDS      => $finalParameters
                 ));
                 break;
             default:
