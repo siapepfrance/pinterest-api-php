@@ -66,6 +66,17 @@ class Response {
      * Return the requested key data
      *
      * @access public
+     * @return array
+     */
+    public function getData()
+    {
+        return $this->response;
+    }
+
+    /**
+     * Return the requested key data
+     *
+     * @access public
      * @param  string   $key
      * @return mixed
      */
