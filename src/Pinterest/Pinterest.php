@@ -76,8 +76,8 @@ class Pinterest {
      */
     public function __get($endpoint)
     {
-        $endpoint = strtolower($endpoint);
-        $class = "\\DirkGroenen\\Pinterest\\Endpoints\\" . ucfirst($endpoint);
+        $endpoint = str_replace('_', '', ucwords($endpoint, '_'));
+        $class = "\\DirkGroenen\\Pinterest\\Endpoints\\" . $endpoint;
 
         // Check if an instance has already been initiated
         if (!isset($this->cachedEndpoints[$endpoint])) {
