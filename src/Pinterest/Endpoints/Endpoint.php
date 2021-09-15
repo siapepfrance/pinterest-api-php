@@ -42,4 +42,17 @@ class Endpoint {
         $this->master = $master;
     }
 
+    /**
+     * Create default header configurations
+     *
+     * @return array
+     */
+    public function getDefaultHeaders()
+    {
+        return array(
+            'Content-Type' => 'application/json',
+            'http_build_query' => false,
+        );
+    }
+
 }

@@ -54,7 +54,8 @@ class Boards extends Endpoint {
      */
     public function create(array $data)
     {
-        $response = $this->request->post("boards", $data);
+        $headers = $this->getDefaultHeaders();
+        $response = $this->request->post("boards", $data, $headers);
         return new Board($this->master, $response);
     }
 
@@ -71,8 +72,8 @@ class Boards extends Endpoint {
     public function edit($boardId, array $data, $fields = null)
     {
         $query = (!$fields) ? array() : array("fields" => $fields);
-
-        $response = $this->request->update(sprintf("boards/%s", $boardId), $data, $query);
+        $headers = $this->getDefaultHeaders();
+        $response = $this->request->update(sprintf("boards/%s", $boardId), $data, $query, $headers);
         return new Board($this->master, $response);
     }
 

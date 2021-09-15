@@ -96,7 +96,7 @@ class PinterestOAuth {
         $this->setRedirectUri($redirect_uri);
 
         // Build url and return it
-        return sprintf("%s?%s", self::AUTH_HOST, http_build_query($queryparams));
+        return sprintf('%s?%s', self::AUTH_HOST, http_build_query($queryparams));
     }
 
     /**
@@ -151,18 +151,19 @@ class PinterestOAuth {
     {
         // Build data array
         $data = array(
-            "grant_type"    => "authorization_code",
-            "code"          => $code,
-            "redirect_uri"  => $this->redirect_uri
+            'grant_type'    => 'authorization_code',
+            'code'          => $code,
+            'redirect_uri'  => $this->redirect_uri
         );
 
         // Build headers array
         $headers = array(
-            'Authorization' => sprintf('Basic %s', base64_encode($this->client_id. ':' .$this->client_secret))
+            'Authorization' => sprintf('Basic %s', base64_encode($this->client_id. ':' .$this->client_secret)),
+            'http_build_query' => true,
         );
 
         // Perform post request
-        $response = $this->request->post("oauth/token", $data, $headers);
+        $response = $this->request->post('oauth/token', $data, $headers);
 
         return $response;
     }
@@ -178,18 +179,19 @@ class PinterestOAuth {
     {
         // Build data array
         $data = array(
-            "grant_type"    => "refresh_token",
-            "refresh_token" => $refresh_token,
-            "$scope" => $scope
+            'grant_type'    => 'refresh_token',
+            'refresh_token' => $refresh_token,
+            'scope' => $scope
         );
 
         // Build headers array
         $headers = array(
-            'Authorization' => sprintf('Basic %s', base64_encode($this->client_id. ':' .$this->client_secret))
+            'Authorization' => sprintf('Basic %s', base64_encode($this->client_id. ':' .$this->client_secret)),
+            'http_build_query' => true,
         );
 
         // Perform post request
-        $response = $this->request->post("oauth/token", $data, $headers);
+        $response = $this->request->post('oauth/token', $data, $headers);
 
         return $response;
     }

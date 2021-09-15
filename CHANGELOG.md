@@ -1,3 +1,9 @@
+### 0.3.13 (15-09-2021)
+- Make the API compatible with Pinterest API v5 ( add missing API endpoints {user account, user account analytics} )
+- Remove the former API Endpoints which are not used ( users, following )
+- Improve the Request Object to manage properly application/json content-type header + set default headers for all post and put requests to manage properly the multi-dimentional parameters
+- Add a method to refresh the expired access tokens refreshOAuthToken 
+
 ### 0.2.13 (27-01-2020)
 - Upgrade PHPunit and add tests for PHP 7.4
 - Fix paths which return redirect errors [#106](https://github.com/dirkgroenen/Pinterest-API-PHP/pull/106) [#107](https://github.com/dirkgroenen/Pinterest-API-PHP/pull/107) [#108](https://github.com/dirkgroenen/Pinterest-API-PHP/pull/108) [#109](https://github.com/dirkgroenen/Pinterest-API-PHP/pull/109)
