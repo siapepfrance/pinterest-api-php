@@ -52,7 +52,7 @@ class Model implements \JsonSerializable {
             $this->fill($modeldata);
         }
         else if ($modeldata instanceof \DirkGroenen\Pinterest\Transport\Response) {
-            $this->fill($modeldata->data);
+            $this->fill(count($modeldata->data) > 0 ? $modeldata->data : $modeldata->getData());
         }
     }
 
@@ -101,10 +101,10 @@ class Model implements \JsonSerializable {
      * Fill the attributes
      *
      * @access private
-     * @param  array   $attributes
+     * @param  $attributes
      * @return void
      */
-    private function fill(array $attributes)
+    private function fill($attributes)
     {
         foreach ($attributes as $key => $value) {
             if ($this->isFillable($key)) {
