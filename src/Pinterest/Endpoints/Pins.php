@@ -55,7 +55,8 @@ class Pins extends Endpoint {
      */
     public function create(array $data)
     {
-        $response = $this->request->post("pins", $data);
+        $headers = $this->getDefaultHeaders();
+        $response = $this->request->post("pins", $data, $headers);
         return new Pin($this->master, $response);
     }
 
@@ -72,8 +73,8 @@ class Pins extends Endpoint {
     public function edit($pinId, array $data, $fields = null)
     {
         $query = (!$fields) ? array() : array("fields" => $fields);
-
-        $response = $this->request->update(sprintf("pins/%s", $pinId), $data, $query);
+        $headers = $this->getDefaultHeaders();
+        $response = $this->request->update(sprintf("pins/%s", $pinId), $data, $query, $headers);
         return new Pin($this->master, $response);
     }
 

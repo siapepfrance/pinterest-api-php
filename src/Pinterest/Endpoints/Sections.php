@@ -26,7 +26,8 @@ class Sections extends Endpoint {
      */
     public function create(string $boardId, array $data)
     {
-        $response = $this->request->post(sprintf("boards/%s/sections", $boardId), $data);
+        $headers = $this->getDefaultHeaders();
+        $response = $this->request->post(sprintf("boards/%s/sections", $boardId), $data, $headers);
         return new Section($this->master, $response);
     }
 
@@ -42,7 +43,8 @@ class Sections extends Endpoint {
      */
     public function update(string $boardId, string $sectionId, array $data)
     {
-        $response = $this->request->put(sprintf("boards/%s/sections/%s", $boardId, $sectionId), $data);
+        $headers = $this->getDefaultHeaders();
+        $response = $this->request->put(sprintf("boards/%s/sections/%s", $boardId, $sectionId), $data, $headers);
         return new Section($this->master, $response);
     }
 

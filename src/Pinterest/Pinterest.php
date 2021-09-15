@@ -17,9 +17,9 @@ use DirkGroenen\Pinterest\Exceptions\InvalidEndpointException;
 
 /**
  * @property \DirkGroenen\Pinterest\Endpoints\Boards boards
- * @property \DirkGroenen\Pinterest\Endpoints\Following following
  * @property \DirkGroenen\Pinterest\Endpoints\Pins pins
- * @property \DirkGroenen\Pinterest\Endpoints\Users users
+ * @property \DirkGroenen\Pinterest\Endpoints\UserAccounts user_accounts
+ * @property \DirkGroenen\Pinterest\Endpoints\AdAccounts ad_accounts
  * @property \DirkGroenen\Pinterest\Endpoints\Sections sections
  */
 class Pinterest {
@@ -76,8 +76,8 @@ class Pinterest {
      */
     public function __get($endpoint)
     {
-        $endpoint = strtolower($endpoint);
-        $class = "\\DirkGroenen\\Pinterest\\Endpoints\\" . ucfirst($endpoint);
+        $endpoint = str_replace('_', '', ucwords($endpoint, '_'));
+        $class = "\\DirkGroenen\\Pinterest\\Endpoints\\" . $endpoint;
 
         // Check if an instance has already been initiated
         if (!isset($this->cachedEndpoints[$endpoint])) {
