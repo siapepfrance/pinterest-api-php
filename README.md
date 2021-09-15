@@ -1,4 +1,4 @@
-## ![](http://i.imgur.com/cacgQlq.png)  Pinterest API - PHP
+## ![](http://i.imgur.com/cacgQlq.png)  Pinterest API V5+ - PHP
 
 [![](https://travis-ci.org/dirkgroenen/Pinterest-API-PHP.svg)](https://travis-ci.org/dirkgroenen/Pinterest-API-PHP)
 [![](https://img.shields.io/scrutinizer/g/dirkgroenen/Pinterest-API-PHP.svg)](https://scrutinizer-ci.com/g/dirkgroenen/Pinterest-API-PHP/?branch=master)
@@ -7,7 +7,7 @@
 [![Packagist](https://img.shields.io/packagist/v/dirkgroenen/pinterest-api-php.svg)](https://packagist.org/packages/dirkgroenen/pinterest-api-php)
 -------------------
 
-A PHP wrapper for the official [Pinterest API](https://developers.pinterest.com/docs/api/v5/).
+A PHP wrapper for the official [Pinterest API V5+](https://developers.pinterest.com/docs/api/v5/).
 
 # Requirements
 - PHP 5.4 or higher (actively tested on PHP >=7.1)
@@ -15,12 +15,12 @@ A PHP wrapper for the official [Pinterest API](https://developers.pinterest.com/
 - Registered Pinterest App
 
 # Get started
-To use the Pinterest API you have to register yourself as a developer and [create](https://developers.pinterest.com/apps/) an application. After you've created your app you will receive a `app_id` and `app_secret`.
+To use the Pinterest API V5+ you have to register yourself as a developer and [create](https://developers.pinterest.com/apps/) an application. After you've created your app you will receive a `app_id` and `app_secret`.
 
 > The terms `client_id` and `client_secret` are in this case `app_id` and `app_secret`.
 
 ## Installation
-The Pinterest API wrapper is available on Github only so you need two steps to install it.
+The Pinterest API V5+ wrapper is available on Github only so you need two steps to install it.
 
 1 - Add siapepfrance/pinterest-api-php to the "require" and "repositories" nodes in the composer.json file : 
 ```json
