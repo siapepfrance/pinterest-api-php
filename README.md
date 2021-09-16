@@ -22,7 +22,7 @@ To use the Pinterest API V5+ you have to register yourself as a developer and [c
 ## Installation
 The Pinterest API V5+ wrapper is available on Github only so you need two steps to install it.
 
-Run composer require
+The Pinterest API V5+ client is available on Composer
 ```
 composer require siapepfrance/pinterest-api-php
 ```

@@ -14,7 +14,7 @@ namespace SiapepFrance\Pinterest\Tests\Endpoints;
 use \SiapepFrance\Pinterest\Pinterest;
 use \SiapepFrance\Pinterest\Tests\Utils\CurlBuilderMock;
 
-class UserAccountsTest extends \PHPUnit\Framework\TestCase
+class AdAccountsTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
@@ -40,17 +40,10 @@ class UserAccountsTest extends \PHPUnit\Framework\TestCase
 
     public function testGet()
     {
-        $response = $this->pinterest->user_accounts->get();
+        $response = $this->pinterest->ad_accounts->get();
 
-        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\UserAccount", $response);
-        $this->assertEquals($response->username, "siapepfrance");
-    }
-
-    public function testGetAnalytics()
-    {
-        $response = $this->pinterest->user_accounts->getAnalytics();
-
-        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\UserAccountAnalytic", $response);
-        $this->assertEquals($response->toArray()['all']['daily_metrics'][0]['data_status'], "READY");
+        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Collection", $response);
+        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\AdAccount", $response->get(0));
+        $this->assertEquals($response->get(0)->id, "549755885175");
     }
 }

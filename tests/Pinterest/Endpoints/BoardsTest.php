@@ -46,16 +46,6 @@ class BoardsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($response->id, "503066289565421201");
     }
 
-    public function testGetWithExtraFields()
-    {
-        $response = $this->pinterest->boards->get("503066289565421201", array(
-            "fields" => "url,description,creator,counts"
-        ));
-
-        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Board", $response);
-        $this->assertTrue(isset($response->creator['first_name']));
-    }
-
     public function testCreate()
     {
         $response = $this->pinterest->boards->create(array(
@@ -64,7 +54,7 @@ class BoardsTest extends \PHPUnit\Framework\TestCase
         ));
 
         $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Board", $response);
-        $this->assertEquals($response->id, "503066289565421205");
+        $this->assertEquals($response->id, "549755885175");
     }
 
     public function testEdit()

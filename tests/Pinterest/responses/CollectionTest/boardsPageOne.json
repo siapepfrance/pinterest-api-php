@@ -1,0 +1,23 @@
+{
+  "items": [
+    {
+      "id": "549755885175",
+      "name": "Summer Recipes",
+      "description": "My favorite summer recipes",
+      "owner": {
+        "username": "string"
+      },
+      "privacy": "PUBLIC"
+    },
+    {
+      "id": "1234567890",
+      "name": "Winter Recipes",
+      "description": "My favorite winter recipes",
+      "owner": {
+        "username": "string"
+      },
+      "privacy": "PUBLIC"
+    }
+  ],
+  "bookmark": "string"
+}

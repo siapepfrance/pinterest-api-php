@@ -49,7 +49,7 @@ class SectionsTest extends \PHPUnit\Framework\TestCase
 
     public function testPins()
     {
-        $response = $this->pinterest->sections->pins("503066289565421201");
+        $response = $this->pinterest->sections->pins("123456789", "503066289565421201");
 
         $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Collection", $response);
         $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Pin", $response->get(0));
@@ -67,7 +67,7 @@ class SectionsTest extends \PHPUnit\Framework\TestCase
 
     public function testDelete()
     {
-        $response = $this->pinterest->sections->delete("5027630990032422748");
+        $response = $this->pinterest->sections->delete("123456789", "5027630990032422748");
 
         $this->assertTrue($response);
     }

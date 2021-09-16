@@ -39,54 +39,44 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @responsefile    interestsPageOne
+     * @responsefile    boardsPageOne
      */
     public function testIfCollectionAllReturnsItems()
     {
-        $response = $this->pinterest->following->interests();
+        $response = $this->pinterest->boards->listBoards();
 
         $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Collection", $response);
         $this->assertTrue(is_array($response->all()));
     }
 
     /**
-     * @responsefile    interestsPageOne
+     * @responsefile    boardsPageOne
      */
-    public function testIfCollectionGetReturnsCorrectAlbum()
+    public function testIfCollectionGetReturnsCorrectBoard()
     {
-        $response = $this->pinterest->following->interests();
+        $response = $this->pinterest->boards->listBoards();
 
         $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Collection", $response);
-        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Interest", $response->get(1));
-        $this->assertEquals($response->get(1)->id, "955147773988");
+        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Board", $response->get(1));
+        $this->assertEquals($response->get(1)->id, "1234567890");
     }
 
     /**
-     * @responsefile    interestsPageOne
-     */
-    public function testIfCollectionHasNextPage()
-    {
-        $response = $this->pinterest->following->interests();
-
-        $this->assertTrue($response->hasNextPage());
-    }
-
-    /**
-     * @responsefile    interestsPageOne
+     * @responsefile    boardsPageOne
      */
     public function testIfCollectionDecodesToJson()
     {
-        $response = $this->pinterest->following->interests();
+        $response = $this->pinterest->boards->listBoards();
 
         $this->assertTrue(is_string($response->toJson()));
     }
 
     /**
-     * @responsefile    interestsPageOne
+     * @responsefile    boardsPageOne
      */
     public function testIfCollectionDecodesToArray()
     {
-        $response = $this->pinterest->following->interests();
+        $response = $this->pinterest->boards->listBoards();
 
         $this->assertTrue(is_array($response->toArray()));
     }
