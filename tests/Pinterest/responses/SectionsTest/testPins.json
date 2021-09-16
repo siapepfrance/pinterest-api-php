@@ -1,1 +1,21 @@
-{"data": [{"url": "https://www.pinterest.com/pin/503066220876931499/", "note": "Nice 36 The Best Modern Office Design Ideas", "link": "https://www.pinterest.com/r/pin/503066220876931499/4782712381411165558/94132ed77c99d478637b44c59a69e2663e6bb6f8e250b45f1b4752cd8d25d14a", "id": "503066220876931499"}], "page": {"cursor": null, "next": null}}
+{
+  "items": [
+    {
+      "id": "813744226420795884",
+      "created_at": "2020-01-01T20:10:40-00:00",
+      "link": "https://www.pinterest.com/",
+      "title": "string",
+      "description": "string",
+      "alt_text": "string",
+      "board_id": "string",
+      "board_section_id": "string",
+      "board_owner": {
+        "username": "string"
+      },
+      "media": {
+        "media_type": "string"
+      }
+    }
+  ],
+  "bookmark": "string"
+}

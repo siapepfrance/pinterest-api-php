@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Copyright 2015 Dirk Groenen
+ * Copyright 2021 SIAPEP France
  *
- * (c) Dirk Groenen <dirk@bitlabs.nl>
+ * (c) SIAPEP France <contact@siapep.fr>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -44,7 +44,7 @@ class SectionsTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Collection", $response);
         $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Section", $response->get(0));
-        $this->assertEquals($response->get(0)->id, "<BoardSection 5027629787972154693>");
+        $this->assertEquals($response->get(0)->id, "549755885175");
     }
 
     public function testPins()
@@ -62,7 +62,7 @@ class SectionsTest extends \PHPUnit\Framework\TestCase
         ));
 
         $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Section", $response);
-        $this->assertEquals($response->id, "<BoardSection 5027630990032422748>");
+        $this->assertEquals($response->id, "549755885175");
     }
 
     public function testDelete()

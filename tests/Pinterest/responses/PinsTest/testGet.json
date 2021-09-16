@@ -1,8 +1,16 @@
 {
-  "data": {
-    "url": "http://pinterest.com/pin/181692166190246650/",
-    "note": "CAVIAR \\\\\\\\ Nice website, cool grid. http://www.caviarcontent.com",
-    "link": "https://www.pinterest.com/r/pin/181692166190246650/4779055074072594921/ac7a0abefd907389a993c10f0faa7fedda87a227a57f0622172a9048e6413e60",
-    "id": "181692166190246650"
+  "id": "813744226420795884",
+  "created_at": "2020-01-01T20:10:40-00:00",
+  "link": "https://www.pinterest.com/",
+  "title": "Test title from API wrapper",
+  "description": "Test description from API wrapper",
+  "alt_text": "",
+  "board_id": "1234567890",
+  "board_section_id": null,
+  "board_owner": {
+    "username": "siapepfrance"
+  },
+  "media": {
+    "media_type": "image_url"
   }
 }
