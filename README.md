@@ -1,10 +1,10 @@
 ## ![](http://i.imgur.com/cacgQlq.png)  Pinterest API V5+ - PHP
 
-[![](https://travis-ci.org/dirkgroenen/Pinterest-API-PHP.svg)](https://travis-ci.org/dirkgroenen/Pinterest-API-PHP)
-[![](https://img.shields.io/scrutinizer/g/dirkgroenen/Pinterest-API-PHP.svg)](https://scrutinizer-ci.com/g/dirkgroenen/Pinterest-API-PHP/?branch=master)
-[![](https://img.shields.io/scrutinizer/coverage/g/dirkgroenen/Pinterest-API-PHP.svg)](https://scrutinizer-ci.com/g/dirkgroenen/Pinterest-API-PHP/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dirkgroenen/Pinterest-API-PHP/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dirkgroenen/Pinterest-API-PHP/?branch=master)
-[![Packagist](https://img.shields.io/packagist/v/dirkgroenen/pinterest-api-php.svg)](https://packagist.org/packages/dirkgroenen/pinterest-api-php)
+[![](https://travis-ci.org/dirkgroenen/pinterest-php-client.svg)](https://travis-ci.org/dirkgroenen/pinterest-php-client)
+[![](https://img.shields.io/scrutinizer/g/dirkgroenen/pinterest-php-client.svg)](https://scrutinizer-ci.com/g/dirkgroenen/pinterest-php-client/?branch=master)
+[![](https://img.shields.io/scrutinizer/coverage/g/dirkgroenen/pinterest-php-client.svg)](https://scrutinizer-ci.com/g/dirkgroenen/pinterest-php-client/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dirkgroenen/pinterest-php-client/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dirkgroenen/pinterest-php-client/?branch=master)
+[![Packagist](https://img.shields.io/packagist/v/dirkgroenen/pinterest-php-client.svg)](https://packagist.org/packages/dirkgroenen/pinterest-php-client)
 -------------------
 
 A PHP wrapper for the official [Pinterest API V5+](https://developers.pinterest.com/docs/api/v5/).
@@ -24,7 +24,7 @@ The Pinterest API V5+ wrapper is available on Github only so you need two steps 
 
 The Pinterest API V5+ client is available on Composer
 ```
-composer require siapepfrance/pinterest-api-php
+composer require siapepfrance/pinterest-php-client
 ```
 
 If you're not using Composer (which you should start using, unless you've got a good reason not to) you can include the `autoload.php` file in your project.
