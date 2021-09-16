@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Copyright 2015 Dirk Groenen
+ * Copyright 2021 SIAPEP France
  *
- * (c) Dirk Groenen <dirk@bitlabs.nl>
+ * (c) SIAPEP France <contact@siapep.fr>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace DirkGroenen\Pinterest\Tests\Endpoints;
+namespace SiapepFrance\Pinterest\Tests\Endpoints;
 
-use \DirkGroenen\Pinterest\Pinterest;
-use \DirkGroenen\Pinterest\Tests\Utils\CurlBuilderMock;
+use \SiapepFrance\Pinterest\Pinterest;
+use \SiapepFrance\Pinterest\Tests\Utils\CurlBuilderMock;
 
 class PinsTest extends \PHPUnit\Framework\TestCase
 {
@@ -40,45 +40,50 @@ class PinsTest extends \PHPUnit\Framework\TestCase
 
     public function testGet()
     {
-        $response = $this->pinterest->pins->get("181692166190246650");
+        $response = $this->pinterest->pins->get("813744226420795884");
 
-        $this->assertInstanceOf("DirkGroenen\Pinterest\Models\Pin", $response);
-        $this->assertEquals($response->id, "181692166190246650");
+        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Pin", $response);
+        $this->assertEquals($response->id, "813744226420795884");
     }
 
     public function testFromBoard()
     {
-        $response = $this->pinterest->pins->fromBoard("503066289565421201");
+        $response = $this->pinterest->pins->fromBoard("813744226420795884");
 
-        $this->assertInstanceOf("DirkGroenen\Pinterest\Models\Collection", $response);
-        $this->assertInstanceOf("DirkGroenen\Pinterest\Models\Pin", $response->get(0));
+        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Collection", $response);
+        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Pin", $response->get(0));
     }
 
     public function testCreate()
     {
         $response = $this->pinterest->pins->create(array(
-            "note"      => "Test pin from API wrapper",
-            "image_url" => "https://download.unsplash.com/photo-1438216983993-cdcd7dea84ce",
-            "board"     => "503066289565421201"
+            "title"         => "Test pin from API wrapper",
+            "description"   => "Test description pin from API wrapper",
+            "link"          => "https://www.pinterest.com/",
+            "media_source"  => [
+                "source_type" => "image_url",
+                "url" => "https://download.unsplash.com/photo-1438216983993-cdcd7dea84ce"
+            ],
+            "board_id"      => "813744226420795884"
         ));
 
-        $this->assertInstanceOf("DirkGroenen\Pinterest\Models\Pin", $response);
-        $this->assertEquals($response->id, "503066220854919983");
+        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Pin", $response);
+        $this->assertEquals($response->id, "813744226420795884");
     }
 
     public function testEdit()
     {
-        $response = $this->pinterest->pins->edit("503066220854919983", array(
-            "note"      => "Test pin from API wrapper - update"
+        $response = $this->pinterest->pins->edit("813744226420795884", array(
+            "title"      => "Test pin from API wrapper - update"
         ));
 
-        $this->assertInstanceOf("DirkGroenen\Pinterest\Models\Pin", $response);
-        $this->assertEquals($response->id, "503066220854919983");
+        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Pin", $response);
+        $this->assertEquals($response->id, "813744226420795884");
     }
 
     public function testDelete()
     {
-        $response = $this->pinterest->pins->delete("503066220854919983");
+        $response = $this->pinterest->pins->delete("813744226420795884");
 
         $this->assertTrue($response);
     }

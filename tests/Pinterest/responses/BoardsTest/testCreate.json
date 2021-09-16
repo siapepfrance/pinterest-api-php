@@ -1,7 +1,9 @@
 {
-  "data": {
-    "url": "https://www.pinterest.com/dirkgroenen/test-board-from-api/",
-    "id": "503066289565421205",
-    "name": "Test Board From API"
-  }
+  "id": "549755885175",
+  "name": "Summer Recipes",
+  "description": "My favorite summer recipes",
+  "owner": {
+    "username": "siapepfrance"
+  },
+  "privacy": "PUBLIC"
 }

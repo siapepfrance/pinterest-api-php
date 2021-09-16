@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Copyright 2015 Dirk Groenen
+ * Copyright 2021 SIAPEP France
  *
- * (c) Dirk Groenen <dirk@bitlabs.nl>
+ * (c) SIAPEP France <contact@siapep.fr>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace DirkGroenen\Pinterest\Tests;
+namespace SiapepFrance\Pinterest\Tests;
 
-use \DirkGroenen\Pinterest\Pinterest;
-use \DirkGroenen\Pinterest\Tests\Utils\CurlBuilderMock;
+use \SiapepFrance\Pinterest\Pinterest;
+use \SiapepFrance\Pinterest\Tests\Utils\CurlBuilderMock;
 
 class PinterestTest extends \PHPUnit\Framework\TestCase
 {

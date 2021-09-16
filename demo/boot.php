@@ -8,7 +8,7 @@
     $dotenv = new Dotenv\Dotenv(__DIR__);
     $dotenv->load();
 
-    $pinterest = new DirkGroenen\Pinterest\Pinterest(getenv("APP_ID"), getenv("APP_SECRET"));
+    $pinterest = new SiapepFrance\Pinterest\Pinterest(getenv("APP_ID"), getenv("APP_SECRET"));
 
     if (isset($_GET["code"])) {
         $token = $pinterest->auth->setRedirectUri(getenv("REDIRECT_URI"))->getOAuthToken($_GET["code"]);

@@ -14,7 +14,7 @@ namespace SiapepFrance\Pinterest\Tests\Endpoints;
 use \SiapepFrance\Pinterest\Pinterest;
 use \SiapepFrance\Pinterest\Tests\Utils\CurlBuilderMock;
 
-class AuthTest extends \PHPUnit\Framework\TestCase
+class AdAccountsTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
@@ -38,18 +38,12 @@ class AuthTest extends \PHPUnit\Framework\TestCase
         $this->pinterest->auth->setOAuthToken("0");
     }
 
-    public function testRandomStateIsSet()
+    public function testGet()
     {
-        $state = $this->pinterest->auth->getState();
+        $response = $this->pinterest->ad_accounts->get();
 
-        $this->assertNotEmpty($state);
-    }
-
-    public function testSetState()
-    {
-        $state = substr(md5(rand()), 0, 7);
-        $this->pinterest->auth->setState($state);
-
-        $this->assertEquals($this->pinterest->auth->getState(), $state);
+        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Collection", $response);
+        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\AdAccount", $response->get(0));
+        $this->assertEquals($response->get(0)->id, "549755885175");
     }
 }

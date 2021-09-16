@@ -1,13 +1,13 @@
 ## ![](http://i.imgur.com/cacgQlq.png)  Pinterest API V5+ - PHP
 
-[![](https://travis-ci.org/dirkgroenen/Pinterest-API-PHP.svg)](https://travis-ci.org/dirkgroenen/Pinterest-API-PHP)
-[![](https://img.shields.io/scrutinizer/g/dirkgroenen/Pinterest-API-PHP.svg)](https://scrutinizer-ci.com/g/dirkgroenen/Pinterest-API-PHP/?branch=master)
-[![](https://img.shields.io/scrutinizer/coverage/g/dirkgroenen/Pinterest-API-PHP.svg)](https://scrutinizer-ci.com/g/dirkgroenen/Pinterest-API-PHP/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dirkgroenen/Pinterest-API-PHP/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dirkgroenen/Pinterest-API-PHP/?branch=master)
-[![Packagist](https://img.shields.io/packagist/v/dirkgroenen/pinterest-api-php.svg)](https://packagist.org/packages/dirkgroenen/pinterest-api-php)
+[![](https://travis-ci.org/dirkgroenen/pinterest-php-client.svg)](https://travis-ci.org/dirkgroenen/pinterest-php-client)
+[![](https://img.shields.io/scrutinizer/g/dirkgroenen/pinterest-php-client.svg)](https://scrutinizer-ci.com/g/dirkgroenen/pinterest-php-client/?branch=master)
+[![](https://img.shields.io/scrutinizer/coverage/g/dirkgroenen/pinterest-php-client.svg)](https://scrutinizer-ci.com/g/dirkgroenen/pinterest-php-client/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dirkgroenen/pinterest-php-client/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dirkgroenen/pinterest-php-client/?branch=master)
+[![Packagist](https://img.shields.io/packagist/v/dirkgroenen/pinterest-php-client.svg)](https://packagist.org/packages/dirkgroenen/pinterest-php-client)
 -------------------
 
-A PHP wrapper for the official [Pinterest API V5+](https://developers.pinterest.com/docs/api/v5/).
+A PHP client for the official [Pinterest API V5+](https://developers.pinterest.com/docs/api/v5/).
 
 # Requirements
 - PHP 5.4 or higher (actively tested on PHP >=7.1)
@@ -22,30 +22,16 @@ To use the Pinterest API V5+ you have to register yourself as a developer and [c
 ## Installation
 The Pinterest API V5+ wrapper is available on Github only so you need two steps to install it.
 
-1 - Add siapepfrance/pinterest-api-php to the "require" and "repositories" nodes in the composer.json file : 
-```json
-{
-    "require": {
-        "dirkgroenen/pinterest-api-php": "^0.3.13"
-    },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/siapepfrance/pinterest-api-php.git"
-        }
-    ]
-}
+The Pinterest API V5+ client is available on Composer
 ```
-2 - Then run composer install
-```
-composer install
+composer require siapepfrance/pinterest-php-client
 ```
 
 If you're not using Composer (which you should start using, unless you've got a good reason not to) you can include the `autoload.php` file in your project.
 
 ## Simple Example
 ```php
-use DirkGroenen\Pinterest\Pinterest;
+use SiapepFrance\Pinterest\Pinterest;
 
 $pinterest = new Pinterest(CLIENT_ID, CLIENT_SECRET);
 ```
@@ -111,23 +97,6 @@ Response:
 }
 ```
 
-By default, not all fields are returned. The returned data from the API has been parsed into the `UserAccount` model. Every field in this model can be filled by parsing an extra `$data` array with the key `fields`. Say we want the user's username, account_type, website_url:
-
-```php
-$pinterest->users->me(array(
-    'fields' => 'username,account_type,website_url'
-));
-```
-
-The response will now be:
-
-```json
-{
-    "account_type": "PINNER",
-    "website_url": "https://www.siapep.fr",
-    "username": "siapepfrance"
-}
-```
 
 # Collection
 

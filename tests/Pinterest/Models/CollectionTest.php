@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Copyright 2015 Dirk Groenen
+ * Copyright 2021 SIAPEP France
  *
- * (c) Dirk Groenen <dirk@bitlabs.nl>
+ * (c) SIAPEP France <contact@siapep.fr>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace DirkGroenen\Pinterest\Tests\Endpoints;
+namespace SiapepFrance\Pinterest\Tests\Endpoints;
 
-use \DirkGroenen\Pinterest\Pinterest;
-use \DirkGroenen\Pinterest\Tests\Utils\CurlBuilderMock;
+use \SiapepFrance\Pinterest\Pinterest;
+use \SiapepFrance\Pinterest\Tests\Utils\CurlBuilderMock;
 
 class CollectionTest extends \PHPUnit\Framework\TestCase
 {
@@ -39,54 +39,44 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @responsefile    interestsPageOne
+     * @responsefile    boardsPageOne
      */
     public function testIfCollectionAllReturnsItems()
     {
-        $response = $this->pinterest->following->interests();
+        $response = $this->pinterest->boards->listBoards();
 
-        $this->assertInstanceOf("DirkGroenen\Pinterest\Models\Collection", $response);
+        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Collection", $response);
         $this->assertTrue(is_array($response->all()));
     }
 
     /**
-     * @responsefile    interestsPageOne
+     * @responsefile    boardsPageOne
      */
-    public function testIfCollectionGetReturnsCorrectAlbum()
+    public function testIfCollectionGetReturnsCorrectBoard()
     {
-        $response = $this->pinterest->following->interests();
+        $response = $this->pinterest->boards->listBoards();
 
-        $this->assertInstanceOf("DirkGroenen\Pinterest\Models\Collection", $response);
-        $this->assertInstanceOf("DirkGroenen\Pinterest\Models\Interest", $response->get(1));
-        $this->assertEquals($response->get(1)->id, "955147773988");
+        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Collection", $response);
+        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Board", $response->get(1));
+        $this->assertEquals($response->get(1)->id, "1234567890");
     }
 
     /**
-     * @responsefile    interestsPageOne
-     */
-    public function testIfCollectionHasNextPage()
-    {
-        $response = $this->pinterest->following->interests();
-
-        $this->assertTrue($response->hasNextPage());
-    }
-
-    /**
-     * @responsefile    interestsPageOne
+     * @responsefile    boardsPageOne
      */
     public function testIfCollectionDecodesToJson()
     {
-        $response = $this->pinterest->following->interests();
+        $response = $this->pinterest->boards->listBoards();
 
         $this->assertTrue(is_string($response->toJson()));
     }
 
     /**
-     * @responsefile    interestsPageOne
+     * @responsefile    boardsPageOne
      */
     public function testIfCollectionDecodesToArray()
     {
-        $response = $this->pinterest->following->interests();
+        $response = $this->pinterest->boards->listBoards();
 
         $this->assertTrue(is_array($response->toArray()));
     }

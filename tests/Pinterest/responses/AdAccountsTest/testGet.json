@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "id": "549755885175",
+      "name": "ad account test",
+      "owner": {
+        "username": "siapepfrance"
+      },
+      "country": "US",
+      "currency": "USD"
+    }
+  ],
+  "bookmark": "string"
+}

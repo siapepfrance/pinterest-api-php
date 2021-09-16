@@ -8,10 +8,10 @@
  * file that was distributed with this source code.
  */
 
-namespace DirkGroenen\Pinterest\Endpoints;
+namespace SiapepFrance\Pinterest\Endpoints;
 
-use DirkGroenen\Pinterest\Models\UserAccount;
-use DirkGroenen\Pinterest\Models\UserAccountAnalytic;
+use SiapepFrance\Pinterest\Models\UserAccount;
+use SiapepFrance\Pinterest\Models\UserAccountAnalytic;
 
 class UserAccounts extends Endpoint {
 
@@ -20,7 +20,7 @@ class UserAccounts extends Endpoint {
      *
      * @access public
      * @param array     $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return UserAccount
      */
     public function get(array $data = [])
@@ -34,7 +34,7 @@ class UserAccounts extends Endpoint {
      *
      * @access public
      * @param array     $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return UserAccountAnalytic
      */
     public function getAnalytics(array $data = [])
