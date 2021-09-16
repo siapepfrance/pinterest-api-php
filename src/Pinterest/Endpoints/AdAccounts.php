@@ -8,9 +8,9 @@
  * file that was distributed with this source code.
  */
 
-namespace DirkGroenen\Pinterest\Endpoints;
+namespace SiapepFrance\Pinterest\Endpoints;
 
-use DirkGroenen\Pinterest\Models\Collection;
+use SiapepFrance\Pinterest\Models\Collection;
 
 class AdAccounts extends Endpoint {
 
@@ -19,7 +19,7 @@ class AdAccounts extends Endpoint {
      *
      * @access public
      * @param array     $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Collection
      */
     public function get(array $data = [])
@@ -34,7 +34,7 @@ class AdAccounts extends Endpoint {
      * @access public
      * @param array     $adAccountId
      * @param array     $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Collection
      */
     public function getAnalytics($adAccountId, array $data = [])
@@ -49,7 +49,7 @@ class AdAccounts extends Endpoint {
      * @access public
      * @param array     $adAccountId
      * @param array     $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Collection
      */
     public function getCampaigns($adAccountId, array $data = [])
@@ -64,7 +64,7 @@ class AdAccounts extends Endpoint {
      * @access public
      * @param array     $adAccountId
      * @param array     $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Collection
      */
     public function getCampaignAnalytics($adAccountId, array $data = [])
@@ -79,7 +79,7 @@ class AdAccounts extends Endpoint {
      * @access public
      * @param array     $adAccountId
      * @param array     $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Collection
      */
     public function getAdGroups($adAccountId, array $data = [])
@@ -94,7 +94,7 @@ class AdAccounts extends Endpoint {
      * @access public
      * @param array     $adAccountId
      * @param array     $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Collection
      */
     public function getAdGroupAnalytics($adAccountId, array $data = [])
@@ -109,7 +109,7 @@ class AdAccounts extends Endpoint {
      * @access public
      * @param array     $adAccountId
      * @param array     $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Collection
      */
     public function getAds($adAccountId, array $data = [])
@@ -124,7 +124,7 @@ class AdAccounts extends Endpoint {
      * @access public
      * @param array     $adAccountId
      * @param array     $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Collection
      */
     public function getAdAnalytics($adAccountId, array $data = [])

@@ -1,17 +1,17 @@
 <?php
 /**
- * Copyright 2015 Dirk Groenen
+ * Copyright 2021 SIAPEP France
  *
- * (c) Dirk Groenen <dirk@bitlabs.nl>
+ * (c) SIAPEP France <contact@siapep.fr>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace DirkGroenen\Pinterest\Endpoints;
+namespace SiapepFrance\Pinterest\Endpoints;
 
-use DirkGroenen\Pinterest\Models\Pin;
-use DirkGroenen\Pinterest\Models\Collection;
+use SiapepFrance\Pinterest\Models\Pin;
+use SiapepFrance\Pinterest\Models\Collection;
 
 class Pins extends Endpoint {
 
@@ -21,7 +21,7 @@ class Pins extends Endpoint {
      * @access public
      * @param  string   $pinId
      * @param array     $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Pin
      */
     public function get($pinId, array $data = [])
@@ -36,7 +36,7 @@ class Pins extends Endpoint {
      * @access public
      * @param  string   $boardId
      * @param array     $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Collection
      */
     public function fromBoard($boardId, array $data = [])
@@ -50,7 +50,7 @@ class Pins extends Endpoint {
      *
      * @access public
      * @param  array    $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Pin
      */
     public function create(array $data)
@@ -67,7 +67,7 @@ class Pins extends Endpoint {
      * @param  string   $pinId
      * @param  array    $data
      * @param  string   $fields
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Pin
      */
     public function edit($pinId, array $data, $fields = null)
@@ -83,7 +83,7 @@ class Pins extends Endpoint {
      *
      * @access public
      * @param  string   $pinId
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return boolean
      */
     public function delete($pinId)
