@@ -97,23 +97,6 @@ Response:
 }
 ```
 
-By default, not all fields are returned. The returned data from the API has been parsed into the `UserAccount` model. Every field in this model can be filled by parsing an extra `$data` array with the key `fields`. Say we want the user's username, account_type, website_url:
-
-```php
-$pinterest->user_accounts->get(array(
-    'fields' => 'username,account_type,website_url'
-));
-```
-
-The response will now be:
-
-```json
-{
-    "account_type": "PINNER",
-    "website_url": "https://www.siapep.fr",
-    "username": "siapepfrance"
-}
-```
 
 # Collection
 
