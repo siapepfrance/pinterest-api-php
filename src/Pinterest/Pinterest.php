@@ -8,19 +8,19 @@
  * file that was distributed with this source code.
  */
 
-namespace DirkGroenen\Pinterest;
+namespace SiapepFrance\Pinterest;
 
-use DirkGroenen\Pinterest\Auth\PinterestOAuth;
-use DirkGroenen\Pinterest\Utils\CurlBuilder;
-use DirkGroenen\Pinterest\Transport\Request;
-use DirkGroenen\Pinterest\Exceptions\InvalidEndpointException;
+use SiapepFrance\Pinterest\Auth\PinterestOAuth;
+use SiapepFrance\Pinterest\Utils\CurlBuilder;
+use SiapepFrance\Pinterest\Transport\Request;
+use SiapepFrance\Pinterest\Exceptions\InvalidEndpointException;
 
 /**
- * @property \DirkGroenen\Pinterest\Endpoints\Boards boards
- * @property \DirkGroenen\Pinterest\Endpoints\Pins pins
- * @property \DirkGroenen\Pinterest\Endpoints\UserAccounts user_accounts
- * @property \DirkGroenen\Pinterest\Endpoints\AdAccounts ad_accounts
- * @property \DirkGroenen\Pinterest\Endpoints\Sections sections
+ * @property \SiapepFrance\Pinterest\Endpoints\Boards boards
+ * @property \SiapepFrance\Pinterest\Endpoints\Pins pins
+ * @property \SiapepFrance\Pinterest\Endpoints\UserAccounts user_accounts
+ * @property \SiapepFrance\Pinterest\Endpoints\AdAccounts ad_accounts
+ * @property \SiapepFrance\Pinterest\Endpoints\Sections sections
  */
 class Pinterest {
 
@@ -77,7 +77,7 @@ class Pinterest {
     public function __get($endpoint)
     {
         $endpoint = str_replace('_', '', ucwords($endpoint, '_'));
-        $class = "\\DirkGroenen\\Pinterest\\Endpoints\\" . $endpoint;
+        $class = "\\SiapepFrance\\Pinterest\\Endpoints\\" . $endpoint;
 
         // Check if an instance has already been initiated
         if (!isset($this->cachedEndpoints[$endpoint])) {

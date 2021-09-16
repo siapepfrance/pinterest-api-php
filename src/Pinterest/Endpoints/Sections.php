@@ -8,10 +8,10 @@
  * file that was distributed with this source code.
  */
 
-namespace DirkGroenen\Pinterest\Endpoints;
+namespace SiapepFrance\Pinterest\Endpoints;
 
-use DirkGroenen\Pinterest\Models\Section;
-use DirkGroenen\Pinterest\Models\Collection;
+use SiapepFrance\Pinterest\Models\Section;
+use SiapepFrance\Pinterest\Models\Collection;
 
 class Sections extends Endpoint {
 
@@ -21,7 +21,7 @@ class Sections extends Endpoint {
      * @access public
      * @param  string   $boardId
      * @param  array    $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Section
      */
     public function create(string $boardId, array $data)
@@ -38,7 +38,7 @@ class Sections extends Endpoint {
      * @param  string   $boardId
      * @param  string   $sectionId
      * @param  array    $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Section
      */
     public function update(string $boardId, string $sectionId, array $data)
@@ -54,7 +54,7 @@ class Sections extends Endpoint {
      * @access public
      * @param  string   $boardId
      * @param  array    $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Collection<Section>
      */
     public function get(string $boardId, array $data = [])
@@ -70,7 +70,7 @@ class Sections extends Endpoint {
      * @param  string   $boardId
      * @param  string   $sectionId
      * @param  array    $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Collection<Pin>
      */
     public function pins(string $boardId, string $sectionId, array $data = [])
@@ -85,7 +85,7 @@ class Sections extends Endpoint {
      * @access public
      * @param  string   $boardId
      * @param  string   $sectionId
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Collection<Pin>
      */
     public function delete($boardId, $sectionId)

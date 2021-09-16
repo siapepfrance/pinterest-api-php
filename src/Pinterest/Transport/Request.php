@@ -8,11 +8,11 @@
  * file that was distributed with this source code.
  */
 
-namespace DirkGroenen\Pinterest\Transport;
+namespace SiapepFrance\Pinterest\Transport;
 
-use DirkGroenen\Pinterest\Utils\CurlBuilder;
-use DirkGroenen\Pinterest\Exceptions\PinterestException;
-use DirkGroenen\Pinterest\Exceptions\CurlException;
+use SiapepFrance\Pinterest\Utils\CurlBuilder;
+use SiapepFrance\Pinterest\Exceptions\PinterestException;
+use SiapepFrance\Pinterest\Exceptions\CurlException;
 
 class Request {
 

@@ -1,11 +1,11 @@
 {
-    "name": "dirkgroenen/pinterest-api-php",
-    "description": "PHP Wrapper for the official Pinterest API",
+    "name": "siapepfrance/pinterest-api-php",
+    "description": "PHP client for the Pinterest API",
     "authors": [
         {
-            "name": "Dirk Groenen",
-            "email": "dirk@bitlabs.nl",
-            "homepage": "http://dirkgroenen.nl",
+            "name": "SIAPEP France",
+            "email": "contact@siapep.fr",
+            "homepage": "https://www.siapep.fr",
             "role": "Creator/Developer"
         }
     ],
@@ -13,6 +13,7 @@
     "type": "library",
     "keywords": [
         "api",
+        "client",
         "wrapper",
         "pinterest"
     ],
@@ -26,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "DirkGroenen\\Pinterest\\": "src/Pinterest"
+            "SiapepFrance\\Pinterest\\": "src/Pinterest"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "DirkGroenen\\Pinterest\\Tests\\": "tests/Pinterest"
+            "SiapepFrance\\Pinterest\\Tests\\": "tests/Pinterest"
         }
     }
 }

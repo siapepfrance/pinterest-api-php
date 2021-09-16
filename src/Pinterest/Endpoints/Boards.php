@@ -8,10 +8,10 @@
  * file that was distributed with this source code.
  */
 
-namespace DirkGroenen\Pinterest\Endpoints;
+namespace SiapepFrance\Pinterest\Endpoints;
 
-use DirkGroenen\Pinterest\Models\Board;
-use DirkGroenen\Pinterest\Models\Collection;
+use SiapepFrance\Pinterest\Models\Board;
+use SiapepFrance\Pinterest\Models\Collection;
 
 class Boards extends Endpoint {
 
@@ -20,7 +20,7 @@ class Boards extends Endpoint {
      *
      * @access public
      * @param  array     $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Collection
      */
     public function listBoards(array $data = [])
@@ -35,7 +35,7 @@ class Boards extends Endpoint {
      * @access public
      * @param  string    $boardId
      * @param  array     $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Board
      */
     public function get($boardId, array $data = [])
@@ -49,7 +49,7 @@ class Boards extends Endpoint {
      *
      * @access public
      * @param  array    $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Board
      */
     public function create(array $data)
@@ -66,7 +66,7 @@ class Boards extends Endpoint {
      * @param  string   $boardId
      * @param  array    $data
      * @param  string   $fields
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Board
      */
     public function edit($boardId, array $data, $fields = null)
@@ -83,7 +83,7 @@ class Boards extends Endpoint {
      * @access public
      * @param  string   $boardId
      * @param  array    $data
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return Collection<Pin>
      */
     public function pins(string $boardId, array $data = [])
@@ -97,7 +97,7 @@ class Boards extends Endpoint {
      *
      * @access public
      * @param  string    $boardId
-     * @throws \DirkGroenen\Pinterest\Exceptions\PinterestException
+     * @throws \SiapepFrance\Pinterest\Exceptions\PinterestException
      * @return boolean
      */
     public function delete($boardId)

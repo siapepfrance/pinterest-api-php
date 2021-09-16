@@ -8,10 +8,10 @@
  * file that was distributed with this source code.
  */
 
-namespace DirkGroenen\Pinterest\Auth;
+namespace SiapepFrance\Pinterest\Auth;
 
-use DirkGroenen\Pinterest\Transport\Request;
-use DirkGroenen\Pinterest\Exceptions\PinterestException;
+use SiapepFrance\Pinterest\Transport\Request;
+use SiapepFrance\Pinterest\Exceptions\PinterestException;
 
 class PinterestOAuth {
 
@@ -145,7 +145,7 @@ class PinterestOAuth {
      * Change the code for an access_token
      *
      * @param  string   $code
-     * @return \DirkGroenen\Pinterest\Transport\Response
+     * @return \SiapepFrance\Pinterest\Transport\Response
      */
     public function getOAuthToken($code)
     {
@@ -173,7 +173,7 @@ class PinterestOAuth {
      *
      * @param  string   $refresh_token
      * @param  string   $scope
-     * @return \DirkGroenen\Pinterest\Transport\Response
+     * @return \SiapepFrance\Pinterest\Transport\Response
      */
     public function refreshOAuthToken($refresh_token, $scope)
     {

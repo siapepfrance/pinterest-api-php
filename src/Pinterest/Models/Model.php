@@ -8,11 +8,11 @@
  * file that was distributed with this source code.
  */
 
-namespace DirkGroenen\Pinterest\Models;
+namespace SiapepFrance\Pinterest\Models;
 
-use DirkGroenen\Pinterest\Exceptions\PinterestException;
-use DirkGroenen\Pinterest\Pinterest\Transport\Response;
-use DirkGroenen\Pinterest\Pinterest;
+use SiapepFrance\Pinterest\Exceptions\PinterestException;
+use SiapepFrance\Pinterest\Pinterest\Transport\Response;
+use SiapepFrance\Pinterest\Pinterest;
 
 class Model implements \JsonSerializable {
 
@@ -51,7 +51,7 @@ class Model implements \JsonSerializable {
         if (is_array($modeldata)) {
             $this->fill($modeldata);
         }
-        else if ($modeldata instanceof \DirkGroenen\Pinterest\Transport\Response) {
+        else if ($modeldata instanceof \SiapepFrance\Pinterest\Transport\Response) {
             $this->fill(count($modeldata->data) > 0 ? $modeldata->data : $modeldata->getData());
         }
     }

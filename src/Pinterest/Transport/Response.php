@@ -8,9 +8,9 @@
  * file that was distributed with this source code.
  */
 
-namespace DirkGroenen\Pinterest\Transport;
+namespace SiapepFrance\Pinterest\Transport;
 
-use DirkGroenen\Pinterest\Utils\CurlBuilder;
+use SiapepFrance\Pinterest\Utils\CurlBuilder;
 
     /**
      * @property array $page

@@ -8,10 +8,10 @@
  * file that was distributed with this source code.
  */
 
-namespace DirkGroenen\Pinterest\Endpoints;
+namespace SiapepFrance\Pinterest\Endpoints;
 
-use DirkGroenen\Pinterest\Transport\Request;
-use DirkGroenen\Pinterest\Pinterest;
+use SiapepFrance\Pinterest\Transport\Request;
+use SiapepFrance\Pinterest\Pinterest;
 
 
 class Endpoint {

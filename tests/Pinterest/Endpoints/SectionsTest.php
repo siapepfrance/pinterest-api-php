@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace DirkGroenen\Pinterest\Tests\Endpoints;
+namespace SiapepFrance\Pinterest\Tests\Endpoints;
 
-use \DirkGroenen\Pinterest\Pinterest;
-use \DirkGroenen\Pinterest\Tests\Utils\CurlBuilderMock;
+use \SiapepFrance\Pinterest\Pinterest;
+use \SiapepFrance\Pinterest\Tests\Utils\CurlBuilderMock;
 
 class SectionsTest extends \PHPUnit\Framework\TestCase
 {
@@ -42,8 +42,8 @@ class SectionsTest extends \PHPUnit\Framework\TestCase
     {
         $response = $this->pinterest->sections->get("503066289565421201");
 
-        $this->assertInstanceOf("DirkGroenen\Pinterest\Models\Collection", $response);
-        $this->assertInstanceOf("DirkGroenen\Pinterest\Models\Section", $response->get(0));
+        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Collection", $response);
+        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Section", $response->get(0));
         $this->assertEquals($response->get(0)->id, "<BoardSection 5027629787972154693>");
     }
 
@@ -51,8 +51,8 @@ class SectionsTest extends \PHPUnit\Framework\TestCase
     {
         $response = $this->pinterest->sections->pins("503066289565421201");
 
-        $this->assertInstanceOf("DirkGroenen\Pinterest\Models\Collection", $response);
-        $this->assertInstanceOf("DirkGroenen\Pinterest\Models\Pin", $response->get(0));
+        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Collection", $response);
+        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Pin", $response->get(0));
     }
 
     public function testCreate()
@@ -61,7 +61,7 @@ class SectionsTest extends \PHPUnit\Framework\TestCase
             "title" => "Test from API"
         ));
 
-        $this->assertInstanceOf("DirkGroenen\Pinterest\Models\Section", $response);
+        $this->assertInstanceOf("SiapepFrance\Pinterest\Models\Section", $response);
         $this->assertEquals($response->id, "<BoardSection 5027630990032422748>");
     }
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Will autoload all required classes in the \DirkGroenen\Pinterest
+ * Will autoload all required classes in the \SiapepFrance\Pinterest
  * namespace.
  *
  * Only use this file if you're not using Composer (which you should
@@ -12,7 +12,7 @@
 spl_autoload_register(function($class) {
 
     // project-specific namespace prefix
-    $prefix = 'DirkGroenen\\Pinterest\\';
+    $prefix = 'SiapepFrance\\Pinterest\\';
 
     // base directory for the namespace prefix
     $base_dir = __DIR__ . '/src/Pinterest/';

@@ -22,30 +22,16 @@ To use the Pinterest API V5+ you have to register yourself as a developer and [c
 ## Installation
 The Pinterest API V5+ wrapper is available on Github only so you need two steps to install it.
 
-1 - Add siapepfrance/pinterest-api-php to the "require" and "repositories" nodes in the composer.json file : 
-```json
-{
-    "require": {
-        "dirkgroenen/pinterest-api-php": "^0.3.13"
-    },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/siapepfrance/pinterest-api-php.git"
-        }
-    ]
-}
+Run composer require
 ```
-2 - Then run composer install
-```
-composer install
+composer require siapepfrance/pinterest-api-php
 ```
 
 If you're not using Composer (which you should start using, unless you've got a good reason not to) you can include the `autoload.php` file in your project.
 
 ## Simple Example
 ```php
-use DirkGroenen\Pinterest\Pinterest;
+use SiapepFrance\Pinterest\Pinterest;
 
 $pinterest = new Pinterest(CLIENT_ID, CLIENT_SECRET);
 ```

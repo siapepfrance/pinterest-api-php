@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace DirkGroenen\Pinterest\Tests\Endpoints;
+namespace SiapepFrance\Pinterest\Tests\Endpoints;
 
-use \DirkGroenen\Pinterest\Pinterest;
-use \DirkGroenen\Pinterest\Tests\Utils\CurlBuilderMock;
+use \SiapepFrance\Pinterest\Pinterest;
+use \SiapepFrance\Pinterest\Tests\Utils\CurlBuilderMock;
 
 class ImageUploadTest extends \PHPUnit\Framework\TestCase
 {
@@ -46,7 +46,7 @@ class ImageUploadTest extends \PHPUnit\Framework\TestCase
         ));
 
         // Check if we got a pin back
-        $this->assertInstanceOf( "DirkGroenen\Pinterest\Models\Pin", $response );
+        $this->assertInstanceOf( "SiapepFrance\Pinterest\Models\Pin", $response );
 
         // Delete pin
         $this->pinterest->pins->delete($response->id);

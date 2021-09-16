@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace DirkGroenen\Pinterest\Exceptions;
+namespace SiapepFrance\Pinterest\Exceptions;
 
 class CurlException extends \Exception {
 

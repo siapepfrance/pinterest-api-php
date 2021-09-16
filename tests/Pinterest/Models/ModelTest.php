@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace DirkGroenen\Pinterest\Tests\Endpoints;
+namespace SiapepFrance\Pinterest\Tests\Endpoints;
 
-use \DirkGroenen\Pinterest\Pinterest;
-use \DirkGroenen\Pinterest\Tests\Utils\CurlBuilderMock;
+use \SiapepFrance\Pinterest\Pinterest;
+use \SiapepFrance\Pinterest\Tests\Utils\CurlBuilderMock;
 
 class ModelTest extends \PHPUnit\Framework\TestCase
 {
