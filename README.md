@@ -7,7 +7,7 @@
 [![Packagist](https://img.shields.io/packagist/v/dirkgroenen/pinterest-php-client.svg)](https://packagist.org/packages/dirkgroenen/pinterest-php-client)
 -------------------
 
-A PHP wrapper for the official [Pinterest API V5+](https://developers.pinterest.com/docs/api/v5/).
+A PHP client for the official [Pinterest API V5+](https://developers.pinterest.com/docs/api/v5/).
 
 # Requirements
 - PHP 5.4 or higher (actively tested on PHP >=7.1)
